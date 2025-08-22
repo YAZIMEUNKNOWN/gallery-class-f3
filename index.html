@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CLASS XI F3 💫 — Perkenalan & Galeri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo"></div>
+        CLASS XI F3 💫
+      </div>
+      <div style="display:flex; gap:10px">
+        <a href="#galeri" class="btn" style="background:linear-gradient(90deg,var(--accent3),var(--accent2))">Galeri</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="perkenalan">
+    <h1>Selamat Datang di Galery XI F3 ✨</h1>
+    <p>Lebih dari sekadar foto, ini adalah bukti kebersamaan dan kenangan XI F3.</p>
+  </section>
+
+  <!-- Galeri -->
+  <section class="section" id="galeri">
+    <h2>Galeri Kegiatan XI F3</h2>
+    <div class="masonry" id="gallery">
+      <!-- Item Galeri -->
+      <figure class="tile" data-src="https://files.catbox.moe/wfnu9z.mp4" data-cap="Persiapan 17 agustus, XI F3"></figure>
+      <figure class="tile" data-src="https://files.catbox.moe/4g3mq1.mp4" data-cap="Lomba Tarik Tambang Putra f3"></figure>
+      <figure class="tile" data-src="https://files.catbox.moe/r379n6.mp4" data-cap="17 agustus Sman2 Pulau Punjung, XI F3"></figure>
+      <figure class="tile" data-src="https://files.catbox.moe/khzrtp.jpg" data-cap="17 agustus Sman2 Pulau Punjung, XI F3"></figure>
+      <figure class="tile" data-src="https://files.catbox.moe/3z3xy2.mp4" data-cap="17 agustus Sman2 Pulau Punjung, XI F3"></figure>
+      <figure class="tile" data-src="https://files.catbox.moe/nnug1x.mp4" data-cap="Program Makan Bergizi, XI F3"></figure>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © <span id="year"></span> XI F3 • Hak Cipta F3 Sman2PulauPunjung ♥
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Render gambar/video sesuai ekstensi
+    document.querySelectorAll('#gallery .tile').forEach(tile => {
+      const src = tile.dataset.src;
+      const cap = tile.dataset.cap;
+      let media;
+      if (src.endsWith('.mp4')) {
+        media = document.createElement('video');
+        media.src = src;
+        media.controls = true;
+      } else {
+        media = document.createElement('img');
+        media.src = src;
+        media.alt = cap;
+      }
+      tile.appendChild(media);
+      const figcap = document.createElement('figcaption');
+      figcap.className = 'cap';
+      figcap.textContent = cap;
+      tile.appendChild(figcap);
+    });
+  </script>
+</body>
+</html>
